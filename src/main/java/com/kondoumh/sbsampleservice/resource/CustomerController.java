@@ -1,6 +1,7 @@
 package com.kondoumh.sbsampleservice.resource;
 
 import com.kondoumh.sbsampleservice.resource.dto.Customer;
+import com.kondoumh.sbsampleservice.resource.exception.ResourceNotFoundException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,9 @@ public class CustomerController {
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
     public Customer getCustomer(@PathVariable("id") Long id) {
 
+        if (id == 1L) {
+            throw new ResourceNotFoundException();
+        }
         Customer c = new Customer();
         c.setId(id);
         c.setName("Bob");
