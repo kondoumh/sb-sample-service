@@ -2,6 +2,8 @@ package com.kondoumh.sbsampleservice.resource;
 
 import com.kondoumh.sbsampleservice.resource.dto.Customer;
 import com.kondoumh.sbsampleservice.resource.exception.ResourceNotFoundException;
+import com.kondoumh.sbsampleservice.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
+
+    private CustomerService servie;
+
+    @Autowired
+    public CustomerController(CustomerService servie) {
+        this.servie = servie;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
