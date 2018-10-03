@@ -31,6 +31,7 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable("id") Long id) {
 
         if (id == 1L) {
+            LOGGER.warn("Not Found id:{}", id);
             throw new ResourceNotFoundException();
         }
         Customer c = new Customer();
