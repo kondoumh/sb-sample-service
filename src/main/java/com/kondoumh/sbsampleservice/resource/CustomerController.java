@@ -3,6 +3,8 @@ package com.kondoumh.sbsampleservice.resource;
 import com.kondoumh.sbsampleservice.resource.dto.Customer;
 import com.kondoumh.sbsampleservice.resource.exception.ResourceNotFoundException;
 import com.kondoumh.sbsampleservice.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
+
+    /** Logger */
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
     private CustomerService servie;
 
