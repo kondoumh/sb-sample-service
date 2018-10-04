@@ -1,3 +1,17 @@
+# MongoDB Connection Settings
+
+# Actuator Settings
+management:
+  health:
+    defaults:
+      enabled: false
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, env, metrics
+
+# Logging Settings
 logging:
   pattern:
     console: '%clr(time:%d{yyyy-MM-dd HH:mm:ss.SSS}){faint}\t%clr(severity:%p)\t%clr(pid:${PID:- }){magenta}\t%clr(thread:[%15.15t]){faint}\t%clr(class:%-40.40logger{39}){cyan}\tmessage:%m%n%wex'
