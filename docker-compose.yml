@@ -1,0 +1,28 @@
+version: '2'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.0.0
+    volumes:
+    - mongodb-data:/data/db
+
+  app:
+    container_name: app
+    build: .
+    ports:
+    - 8080:8080
+    volumes:
+    - ~/.m2:/root/.m2
+    links:
+    - mongodb:mongodb
+    depends_on:
+    - mongodb
+    environment:
+    - MONGODB_HOST=mongodb
+    - MONGODB_PORT=27017
+    - MONGODB_DATABSE=sample
+    - EXTERNAL_SERVICE_BASE_URL="http://localhost:8080/api"
+
+volumes:
+  mongodb-data:
+    driver: local
