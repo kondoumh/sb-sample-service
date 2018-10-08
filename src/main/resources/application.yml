@@ -1,7 +1,7 @@
 # MongoDB Connection Settings
 data:
   mongodb:
-    host: mongodb-sb
+    host: mongodb
     port: 27017
     database: sample
 
