@@ -1,9 +1,12 @@
 # MongoDB Connection Settings
-data:
-  mongodb:
-    host: mongodb
-    port: 27017
-    database: sample
+
+spring:
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      uri: mongodb://mongodb
+      database: sample
 
 # Actuator Settings
 management:
