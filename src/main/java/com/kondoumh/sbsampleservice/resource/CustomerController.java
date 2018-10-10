@@ -1,8 +1,8 @@
 package com.kondoumh.sbsampleservice.resource;
 
 import com.kondoumh.sbsampleservice.resource.dto.Customer;
-import com.kondoumh.sbsampleservice.resource.exception.ResourceNotFoundException;
 import com.kondoumh.sbsampleservice.service.CustomerService;
+import com.kondoumh.sbsampleservice.service.dto.CustomerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +29,11 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
     public Customer getCustomer(@PathVariable("id") Long id) {
-
-        if (id == 1L) {
-            LOGGER.warn("Not Found id:{}", id);
-            throw new ResourceNotFoundException();
-        }
-        Customer c = new Customer();
-        c.setId(id);
-        c.setName("Bob");
-        return c;
+        CustomerDto dto = servie.get(id);
+        Customer customer = new Customer();
+        customer.setId(dto.getId());
+        customer.setName(dto.getName());
+        return customer;
     }
 
     @ResponseBody
