@@ -1,8 +1,7 @@
 package com.kondoumh.sbsampleservice.resource;
 
-import com.kondoumh.sbsampleservice.resource.dto.Customer;
 import com.kondoumh.sbsampleservice.service.CustomerService;
-import com.kondoumh.sbsampleservice.service.dto.CustomerDto;
+import com.kondoumh.sbsampleservice.dto.CustomerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +27,17 @@ public class CustomerController {
 
     @ResponseBody
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
-    public Customer getCustomer(@PathVariable("id") Long id) {
-        CustomerDto dto = servie.get(id);
-        Customer customer = new Customer();
-        customer.setId(dto.getId());
-        customer.setName(dto.getName());
-        return customer;
+    public CustomerDto getCustomer(@PathVariable("id") Long id) {
+        return servie.get(id);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
-    public List<Customer> findCustomer(@PathVariable("name") String name) {
-        Customer a = new Customer();
+    public List<CustomerDto> findCustomer(@PathVariable("name") String name) {
+        CustomerDto a = new CustomerDto();
         a.setId(1111L);
         a.setName(name);
-        Customer b = new Customer();
+        CustomerDto b = new CustomerDto();
         b.setId(2222L);
         b.setName(name);
         return Arrays.asList(a, b);
@@ -50,10 +45,10 @@ public class CustomerController {
 
     @ResponseBody
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
-    public Long registerCustomer(@RequestBody @Validated Customer customer) {
+    public Long registerCustomer(@RequestBody @Validated CustomerDto customer) {
 
         Long id = Long.valueOf(1234L);
-        Customer c = new Customer();
+        CustomerDto c = new CustomerDto();
         c.setId(id);
         c.setName(customer.getName());
         return c.getId();
@@ -67,7 +62,7 @@ public class CustomerController {
 
     @ResponseBody
     @RequestMapping(value = "/user/", method = RequestMethod.PUT)
-    public int updateCustomer(@RequestBody @Validated Customer customer) {
+    public int updateCustomer(@RequestBody @Validated CustomerDto customer) {
         return 1;
     }
 }

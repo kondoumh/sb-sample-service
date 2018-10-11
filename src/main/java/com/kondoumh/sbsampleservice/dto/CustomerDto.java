@@ -1,4 +1,4 @@
-package com.kondoumh.sbsampleservice.service.dto;
+package com.kondoumh.sbsampleservice.dto;
 
 import lombok.Data;
 
