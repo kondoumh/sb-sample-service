@@ -1,4 +1,4 @@
-package com.kondoumh.sbsampleservice.resource;
+package com.kondoumh.sbsampleservice.presentation;
 
 import com.kondoumh.sbsampleservice.service.CustomerService;
 import com.kondoumh.sbsampleservice.dto.CustomerDto;

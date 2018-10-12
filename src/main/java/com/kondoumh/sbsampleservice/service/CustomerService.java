@@ -1,6 +1,6 @@
 package com.kondoumh.sbsampleservice.service;
 
-import com.kondoumh.sbsampleservice.resource.exception.ResourceNotFoundException;
+import com.kondoumh.sbsampleservice.presentation.exception.ResourceNotFoundException;
 import com.kondoumh.sbsampleservice.dto.CustomerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
