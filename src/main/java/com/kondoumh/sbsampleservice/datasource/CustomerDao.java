@@ -5,13 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CustomerDao {
 
+    private MongoOperations mongoOperations;
+
     @Autowired
-    protected MongoOperations mongoOperations;
+    public CustomerDao(MongoOperations mongoOperations) { this.mongoOperations = mongoOperations; }
 
     public Long register(Customer customer) {
         mongoOperations.save(customer);
