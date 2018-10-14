@@ -18,51 +18,40 @@ public class CustomerController {
     /** Logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
-    private CustomerService servie;
+    private CustomerService service;
 
     @Autowired
     public CustomerController(CustomerService servie) {
-        this.servie = servie;
+        this.service = servie;
     }
 
     @ResponseBody
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
     public CustomerDto getCustomer(@PathVariable("id") Long id) {
-        return servie.get(id);
+        return service.get(id);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
     public List<CustomerDto> findCustomer(@PathVariable("name") String name) {
-        CustomerDto a = new CustomerDto();
-        a.setId(1111L);
-        a.setName(name);
-        CustomerDto b = new CustomerDto();
-        b.setId(2222L);
-        b.setName(name);
-        return Arrays.asList(a, b);
+        return service.findByName(name);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
     public Long registerCustomer(@RequestBody @Validated CustomerDto customer) {
-
-        Long id = Long.valueOf(1234L);
-        CustomerDto c = new CustomerDto();
-        c.setId(id);
-        c.setName(customer.getName());
-        return c.getId();
+        return service.register(customer);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public int deleteCustomer(@PathVariable("id") Long id) {
-        return 1;
+        return service.delete(id);
     }
 
     @ResponseBody
     @RequestMapping(value = "/user/", method = RequestMethod.PUT)
     public int updateCustomer(@RequestBody @Validated CustomerDto customer) {
-        return 1;
+        return service.update(customer);
     }
 }
