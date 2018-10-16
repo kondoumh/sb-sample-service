@@ -47,12 +47,11 @@ public class CustomerService {
         return Arrays.asList(a, b);
     }
 
-    public Long register(CustomerDto customer) {
-        Long id = Long.valueOf(1234L);
-        CustomerDto c = new CustomerDto();
-        c.setId(id);
-        c.setName(customer.getName());
-        return c.getId();
+    public Long register(CustomerDto input) {
+        Customer c = new Customer();
+        c.setId(input.getId());
+        c.setName(input.getName());
+        return dao.register(c);
     }
 
     public int update(CustomerDto customer) {
