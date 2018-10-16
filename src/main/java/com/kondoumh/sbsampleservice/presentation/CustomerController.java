@@ -1,5 +1,6 @@
 package com.kondoumh.sbsampleservice.presentation;
 
+import com.kondoumh.sbsampleservice.presentation.exception.ResourceNotFoundException;
 import com.kondoumh.sbsampleservice.service.CustomerService;
 import com.kondoumh.sbsampleservice.dto.CustomerDto;
 import org.slf4j.Logger;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -28,7 +28,11 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/usr/{id}", method = RequestMethod.GET)
     public CustomerDto getCustomer(@PathVariable("id") Long id) {
-        return service.get(id);
+        CustomerDto dto = service.get(id);
+        if (dto == null) {
+            throw new ResourceNotFoundException();
+        }
+        return dto;
     }
 
     @ResponseBody
