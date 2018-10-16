@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,13 +39,15 @@ public class CustomerService {
     }
 
     public List<CustomerDto> findByName(String name) {
-        CustomerDto a = new CustomerDto();
-        a.setId(1111L);
-        a.setName(name);
-        CustomerDto b = new CustomerDto();
-        b.setId(2222L);
-        b.setName(name);
-        return Arrays.asList(a, b);
+        List<Customer> customers = dao.findByName(name);
+        List<CustomerDto> customerDtos = new ArrayList<CustomerDto>(customers.size());
+        for(Customer customer : customers) {
+            CustomerDto dto = new CustomerDto();
+            dto.setId(customer.getId());
+            dto.setName(customer.getName());
+            customerDtos.add(dto);
+        }
+        return customerDtos;
     }
 
     public Long register(CustomerDto input) {

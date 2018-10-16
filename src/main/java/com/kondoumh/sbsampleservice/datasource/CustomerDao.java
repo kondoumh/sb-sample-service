@@ -32,6 +32,16 @@ public class CustomerDao {
         return query;
     }
 
+    public List<Customer> findByName(String name) {
+        return mongoOperations.find(buildQueryByName(name), Customer.class);
+    }
+
+    private Query buildQueryByName(String name) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("name").is(name));
+        return query;
+    }
+
     public List<Customer> getAll() {
         return mongoOperations.findAll(Customer.class);
     }
