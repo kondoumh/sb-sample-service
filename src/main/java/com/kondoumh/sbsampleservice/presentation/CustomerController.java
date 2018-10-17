@@ -21,8 +21,8 @@ public class CustomerController {
     private CustomerService service;
 
     @Autowired
-    public CustomerController(CustomerService servie) {
-        this.service = servie;
+    public CustomerController(CustomerService service) {
+        this.service = service;
     }
 
     @ResponseBody
