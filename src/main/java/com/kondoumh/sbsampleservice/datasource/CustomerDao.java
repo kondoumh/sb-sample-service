@@ -42,10 +42,6 @@ public class CustomerDao {
         return query;
     }
 
-    public List<Customer> getAll() {
-        return mongoOperations.findAll(Customer.class);
-    }
-
     public void update(Customer customer) {
         mongoOperations.save(customer);
     }
