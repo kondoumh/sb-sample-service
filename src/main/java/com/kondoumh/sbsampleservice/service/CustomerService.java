@@ -57,11 +57,14 @@ public class CustomerService {
         return dao.register(c);
     }
 
-    public int update(CustomerDto customer) {
-        return 1;
+    public int update(CustomerDto dto) {
+        Customer entity = new Customer();
+        entity.setId(dto.getId());
+        entity.setName(dto.getName());
+        return dao.update(entity);
     }
 
     public int delete(Long id) {
-        return 1;
+        return dao.delete(id);
     }
 }

@@ -42,12 +42,22 @@ public class CustomerDao {
         return query;
     }
 
-    public void update(Customer customer) {
-        mongoOperations.save(customer);
+    public int update(Customer customer) {
+        Customer c = get(customer.getId());
+        if (c != null) {
+            c.setName(customer.getName());
+            mongoOperations.save(c);
+            return 1;
+        }
+        return 0;
     }
 
-    public void delete(Long id) {
+    public int delete(Long id) {
         Customer customer = mongoOperations.findOne(buildQueryById(id), Customer.class);
-        mongoOperations.remove(customer);
+        if (customer != null) {
+            mongoOperations.remove(customer);
+            return 1;
+        }
+        return 0;
     }
 }
