@@ -2,16 +2,14 @@ package com.kondoumh.sbsampleservice.service;
 
 import com.kondoumh.sbsampleservice.datasource.CustomerDao;
 import com.kondoumh.sbsampleservice.entiry.Customer;
-import com.kondoumh.sbsampleservice.presentation.exception.ResourceNotFoundException;
 import com.kondoumh.sbsampleservice.dto.CustomerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -32,22 +30,19 @@ public class CustomerService {
             LOGGER.warn("Not Found id:{}", id);
             return null;
         }
-        CustomerDto dto = new CustomerDto();
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        return dto;
+        return toDto(entity);
     }
 
     public List<CustomerDto> findByName(String name) {
         List<Customer> customers = dao.findByName(name);
-        List<CustomerDto> customerDtos = new ArrayList<CustomerDto>(customers.size());
-        for(Customer customer : customers) {
-            CustomerDto dto = new CustomerDto();
-            dto.setId(customer.getId());
-            dto.setName(customer.getName());
-            customerDtos.add(dto);
-        }
-        return customerDtos;
+        return customers.stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    private CustomerDto toDto(Customer entity) {
+        CustomerDto dto = new CustomerDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        return dto;
     }
 
     public Long register(CustomerDto input) {
