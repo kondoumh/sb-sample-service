@@ -2,9 +2,7 @@ package com.kondoumh.sbsampleservice.datasource;
 
 import com.kondoumh.sbsampleservice.entiry.Customer;
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -28,7 +26,7 @@ public class CustomerDaoTest {
     private CustomerDao dao;
 
     @Before
-    public void setup() {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         dao = new CustomerDao(mongoOperations);
     }
