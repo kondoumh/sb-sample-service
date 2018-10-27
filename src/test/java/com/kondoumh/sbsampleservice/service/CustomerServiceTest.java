@@ -91,11 +91,10 @@ public class CustomerServiceTest {
 
     @Test
     public void testDelete() {
-        Customer entity = new Customer();
         when(dao.delete(any(Long.class))).thenReturn(1);
 
         int actual = service.delete(1234L);
         assertThat(actual).isEqualTo(1);
-        verify(dao, times(1)).delete(any(Long.class));
+        verify(dao, times(1)).delete(eq(1234L));
     }
 }
