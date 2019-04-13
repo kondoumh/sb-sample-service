@@ -13,8 +13,6 @@ services:
     build: .
     ports:
       - 18888:8080
-    volumes:
-      - ~/.m2:/root/.m2
     links:
       - mongodb:mongodb
     depends_on:
