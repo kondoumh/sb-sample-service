@@ -1,0 +1,14 @@
+resources:
+  - name: sb-sample-service
+    type: git
+    source:
+      uri: https://github.com/kondoumh/sb-sample-service.git
+      branch: master
+
+jobs:
+  - name: build
+    public: true
+    plan:
+      - get: sb-sample-service
+      - task: Build project
+        file: sb-sample-service/concourse/tasks/build.yml
