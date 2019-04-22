@@ -9,6 +9,6 @@ jobs:
   - name: build
     public: true
     plan:
-      - get: sb-sample-service
-      - task: Build project
-        file: sb-sample-service/concourse/tasks/build.yml
+    - get: sb-sample-service
+    - task: Build project
+      file: sb-sample-service/concourse/tasks/build.yml
