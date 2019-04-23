@@ -10,5 +10,8 @@ inputs:
 outputs:
   - name: sb-sample-service
 
+caches:
+  - path: .m2/
+
 run:
   path: "sb-sample-service/concourse/tasks/build.sh"
