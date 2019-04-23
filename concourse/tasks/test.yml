@@ -9,5 +9,5 @@ inputs:
 
 run:
   path: ls
-  args: ["target"]
+  args: ["-lR"]
   #path: "sb-sample-service/concourse/tasks/test.sh"
