@@ -1,11 +1,11 @@
-#!/bin/sh
-set -e
+#!/bin/sh -xe
 source /docker-lib.sh
 start_docker
-
+hostname
+hostname -i
 cd sb-sample-service
 docker-compose up -d
-sleep 300
+sleep 180
 curl -X POST "http://localhost:8080/api/user/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Mike\"}"
 curl -X GET "http://localhost:8080/api/usr/1" -H "accept: */*"
 docker-compose down
