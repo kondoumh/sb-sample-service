@@ -8,6 +8,6 @@ inputs:
   - name: target
 
 run:
-  #path: ls
-  #args: ["build-output"]
-  path: test.sh
+  path: ls
+  args: ["target"]
+  #path: "sb-sample-service/concourse/tasks/test.sh"
