@@ -6,12 +6,12 @@ resources:
       branch: master
 
 jobs:
-- name: build
+- name: build-sb-service
   public: true
   plan:
   - get: sb-sample-service
   - task: Build project
     file: sb-sample-service/concourse/tasks/build.yml
-  - task: Integration test
+  - task: Deploy service
     privileged: true
-    file: sb-sample-service/concourse/tasks/test.yml
+    file: sb-sample-service/concourse/tasks/deploy.yml

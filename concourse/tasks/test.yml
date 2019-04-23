@@ -8,4 +8,4 @@ inputs:
   - name: sb-sample-service
 
 run:
-  path: "sb-sample-service/concourse/tasks/test.sh"
+  path: "sb-sample-service/concourse/tasks/deploy.sh"
