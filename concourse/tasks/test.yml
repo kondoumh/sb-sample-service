@@ -5,7 +5,6 @@ image_resource:
   source: {repository: quay.io/cosee-concourse/dind, tag: latest}
 
 inputs:
-  - name: target
   - name: sb-sample-service
 
 run:
