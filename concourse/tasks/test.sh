@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
-#apk add --no-cache py-pip python-dev libffi-dev openssl-dev gcc libc-dev make curl
-#pip install docker-compose
+source /docker-lib.sh
+start_docker
+
 cd sb-sample-service
 docker-compose up -d
 sleep 30
