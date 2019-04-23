@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
-ls target
+pwd
+ls -lR
 #apk add --no-cache py-pip python-dev libffi-dev openssl-dev gcc libc-dev make curl
 #pip install docker-compose
 #docker-compose up -d
