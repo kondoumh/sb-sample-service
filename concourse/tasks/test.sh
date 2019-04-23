@@ -1,9 +1,9 @@
 #!/bin/sh -xe
-apk add --no-cache py-pip python-dev libffi-dev openssl-dev gcc libc-dev make curl
-pip install docker-compose
+source /docker-lib.sh
+start_docker
+
 cd sb-sample-service
 docker-compose up -d
-sleep 60
-curl -X POST "http://docker:8080/api/user/" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Mike\"}"
-curl -X GET "http://docker:8080/api/usr/1" -H "accept: */*"
+sleep 30
+docker ps
 docker-compose down
