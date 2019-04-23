@@ -8,7 +8,7 @@ inputs:
   - name: sb-sample-service
 
 outputs:
-  - name: build-output
+  - name: target
 
 run:
   path: "sb-sample-service/concourse/tasks/build.sh"
