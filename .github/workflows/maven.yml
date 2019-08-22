@@ -18,7 +18,7 @@ jobs:
 
     - uses: actions/upload-artifact@master
       with:
-        name: sb-sample-service
+        name: sb-sample-service.jar
         path: ./target/sb-sample-service.jar
 
   build-image:
@@ -30,8 +30,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/download-artifact@master
       with:
-        name: sb-sample-service
-        path: .
+        name: sb-sample-service.jar
+        path: ./target
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag sb-sample-service:$(date +%s)
