@@ -15,3 +15,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: ./mvnw package
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: Upload artifact
+        path: ./target/sb-sample-service.jar
