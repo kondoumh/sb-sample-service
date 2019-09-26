@@ -33,5 +33,9 @@ jobs:
         name: sb-sample-service.jar
         path: ./target
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sb-sample-service:$(date +%s)
+    - name: Build and push Docker image
+      run: |
+        docker login docker.pkg.github.com --username kondoumh
+        # docker build . --file Dockerfile --tag sb-sample-service:$(date +%s)
+        docker tag app docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
+        push docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
