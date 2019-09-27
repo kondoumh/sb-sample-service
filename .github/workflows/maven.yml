@@ -37,5 +37,4 @@ jobs:
       run: |
         docker login docker.pkg.github.com -u kondoumh -p ${{ secrets.DOCKER_REGISTRY_TOKEN }}
         docker build . --file Dockerfile --tag docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
-        # docker tag app docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
-        push docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
+        docker push docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
