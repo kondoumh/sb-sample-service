@@ -36,7 +36,7 @@ jobs:
     - name: Build image and Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: docker.pkg.github.com/kondoumh/sb-sample-service
+        name: kondoumh/sb-sample-service/app
         username: kondoumh
         password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
         registry: docker.pkg.github.com
