@@ -33,13 +33,10 @@ jobs:
         name: sb-sample-service.jar
         path: ./target
 
-    - name: Build Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/kondoumh/sb-sample-service/app:1.0
-
-    - name: Publish to Registry
+    - name: Build image and Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: docker.pkg.github.com/kondoumh//sb-sample-service/app:1.0
+        name: docker.pkg.github.com/kondoumh/sb-sample-service
         username: kondoumh
         password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
         registry: docker.pkg.github.com
