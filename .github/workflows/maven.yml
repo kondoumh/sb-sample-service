@@ -38,5 +38,5 @@ jobs:
       with:
         name: docker.pkg.github.com/kondoumh/sb-sample-service/app
         username: kondoumh
-        password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
