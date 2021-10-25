@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sb-sample-service
+  name: sb-sample-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sb-sample-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: sb-sample-service
+    spec:
+      containers:
+      - image: ghcr.io/kondoumh/sb-sample-service/sb-sample-service:latest
+        name: sb-sample-service
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        env:
+          - name: DB_HOST
+            value: mongodb
+
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sb-sample-service
+  name: sb-sample-service
+spec:
+  ports:
+  - name: 18888-8080
+    port: 18888
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: sb-sample-service
+  type: ClusterIP
+status:
+  loadBalancer: {}
