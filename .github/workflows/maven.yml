@@ -34,7 +34,7 @@ jobs:
         path: ./target
 
     - name: Build image and Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: ghcr.io/kondoumh/sb-sample-service/sb-sample-service
         username: kondoumh
